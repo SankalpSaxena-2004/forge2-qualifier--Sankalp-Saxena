@@ -1,87 +1,65 @@
-# Contributing to OpenClaw Board
+Contributing to OpenClaw Board
 
-Danke für dein Interesse, zu diesem Projekt beizutragen! 🦞
+Thank you for your interest in contributing to this project! 🦞
 
-## 🚀 Wie du beitragen kannst
+🚀 How You Can Contribute
 
-1. **Bugs melden** - Erstelle ein [Issue](https://github.com/AlexPEClub/openclaw_react_board/issues)
-2. **Features vorschlagen** - Diskutiere neue Ideen in den Issues
-3. **Code beitragen** - Fork, entwickeln, Pull Request erstellen
-4. **Dokumentation** - Verbessere README, füge Beispiele hinzu
-5. **Übersetzungen** - Hilf bei der Internationalisierung
+You can help in many ways:
 
-## 🛠️ Entwicklung
-
-### Setup
-
-```bash
-# Repository forken und klonen
+Report bugs – Create an Issue
+Suggest features – Discuss new ideas in Issues
+Contribute code – Fork the repo, develop, and submit a Pull Request
+Improve documentation – Enhance README and add examples
+Translations – Help with internationalization
+🛠️ Development Setup
+Installation
+# Fork and clone the repository
 git clone https://github.com/AlexPEClub/openclaw_react_board.git
 cd openclaw_react_board
 
-# Dependencies installieren
+# Install dependencies
 npm install
 
-# Development Server starten
+# Start development server
 npm run dev
-```
+🎨 Code Style Guidelines
+Use 4 spaces for indentation
+Write comments in English or German
+Use descriptive variable names
+Document functions where necessary
+🧪 Testing
 
-### Code Style
+Currently, there are no automated tests. Please test manually:
 
-- Use 4 spaces for indentation
-- Kommentare auf Deutsch oder Englisch
-- Beschreibende Variablennamen
-- Functions dokumentieren
+ Create/delete project
+ Add/move tasks
+ File browser navigation
+ Edit context files
+ Activity log functionality
+📝 Pull Request Process
+Fork the repository
+Create a feature branch:
+git checkout -b feature/my-feature
+Commit your changes:
+git commit -m "feat: describe your change"
+Push to your fork:
+git push origin feature/my-feature
+Open a Pull Request
+📌 Commit Convention
 
-### Testing
+We follow Conventional Commits:
 
-Aktuell gibt es noch keine automatisierten Tests. Bitte teste manuell:
+feat: New feature
+fix: Bug fix
+docs: Documentation changes
+style: Code formatting
+refactor: Code restructuring
+test: Tests
+chore: Maintenance tasks
+🤝 Code of Conduct
+Be respectful and constructive
+Help other community members
+No harassment or discrimination
+📜 License
 
-- [ ] Projekt erstellen/löschen
-- [ ] Tasks hinzufügen/verschieben
-- [ ] File Browser Navigation
-- [ ] Context Files bearbeiten
-- [ ] Activity Log
-
-## 📝 Pull Request Process
-
-1. Fork das Repository
-2. Erstelle einen Feature Branch
-   ```bash
-   git checkout -b feature/mein-feature
-   ```
-3. Committe deine Änderungen
-   ```bash
-   git commit -m "feat: Beschreibung der Änderung"
-   ```
-4. Push zu deinem Fork
-   ```bash
-   git push origin feature/mein-feature
-   ```
-5. Erstelle einen Pull Request
-
-### Commit Messages
-
-Wir nutzen [Conventional Commits](https://www.conventionalcommits.org/):
-
-- `feat:` Neues Feature
-- `fix:` Bugfix
-- `docs:` Dokumentation
-- `style:` Code Formatierung
-- `refactor:` Code Refactoring
-- `test:` Tests
-- `chore:` Wartung
-
-## 🤝 Code of Conduct
-
-- Sei respektvoll und konstruktiv
-- Hilf anderen Community-Mitgliedern
-- Keine Diskriminierung oder Belästigung
-
-## 📜 Lizenz
-
-Mit deinen Beiträgen stimmst du zu, dass diese unter der MIT-Lizenz veröffentlicht werden.
-
----
-
-Fragen? Erstelle ein Issue oder kontaktiere uns im [Clawdbot Discord](https://discord.com/invite/clawd)!
+By contributing, you agree that your contributions will be licensed under the MIT License.
