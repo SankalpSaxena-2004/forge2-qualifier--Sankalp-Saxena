@@ -1,17 +1,17 @@
 # OpenClaw React Board
 
-Multi-Project Kanban Board mit integriertem File Browser und Context-Speicher. Optimiert für Clawdbot/openclaw Agent-Workflows.
+A multi-project Kanban board featuring an integrated file browser and context storage, designed specifically for Clawdbot/OpenClaw agent workflows.
 
 ## Features
 
-- **Multi-Projekt Support** - Verwalte mehrere Projekte mit eigenem Kanban Board
-- **Kanban Board** - 4 Spalten: Offen, In Arbeit, Review, Erledigt
-- **File Browser** - Integrierter Datei-Explorer mit Syntax Highlighting
-- **Context-Speicher** - Zentrale Ablage für Workspace-Konfiguration (AGENTS.md, SOUL.md, etc.)
-- **Activity Log** - Chronologische Ansicht aller Projekt-Aktivitäten
-- **Agent Status Tracking** - Verfügbar/Beschäftigt basierend auf aktiven Tasks
-- **Dark Theme** - GitHub-inspiriertes Design
-- **Markdown Support** - Vorschau von Markdown-Dateien
+- Multi-Project Support – Manage multiple projects, each with its own Kanban board.
+- Kanban Board – Four columns: To Do, In Progress, Review, and Done.
+- File Browser – Integrated file explorer with syntax highlighting.
+- Context Storage – Centralized storage for workspace configuration files (AGENTS.md, SOUL.md, etc.).
+- Activity Log – Chronological view of all project activities.
+- Agent Status Tracking – Tracks Available/Busy status based on active tasks.
+- Dark Theme – GitHub-inspired user interface.
+- Markdown Support – Preview and view Markdown files directly within the application.
 
 ## Quick Start
 
@@ -24,11 +24,11 @@ npm install
 npm start
 ```
 
-Das Board läuft dann auf: http://localhost:3000
+The board will then run on ...: http://localhost:3000
 
 ### Clawdbot/openclaw Agent Installation
 
-Gib deinem Agent diesen Prompt:
+Give this prompt to your agent:
 
 ```
 cd ~/.openclaw/workspace
@@ -37,7 +37,7 @@ cd kanban && npm install && ./update-projects.js
 OPENCLAW_WORKSPACE=$(cd .. && pwd) npm start
 ```
 
-Detaillierte Setup-Prompts findest du in `SETUP_PROMPT.md`.
+You can find detailed setup prompts in `SETUP_PROMPT.md`.
 
 ### Docker
 
@@ -50,7 +50,7 @@ docker build -t openclaw-kanban .
 docker run -p 3000:3000 -v $(pwd)/data:/app/data openclaw-kanban
 ```
 
-## Konfiguration
+## Configuration
 
 ### Environment Variables
 
@@ -61,60 +61,61 @@ OPENCLAW_WORKSPACE=/data/.openclaw/workspace # Context-Files Pfad (default: /dat
 
 ### Context Files
 
-Der Server lädt folgende Workspace-Dateien aus dem per `OPENCLAW_WORKSPACE` konfigurierten Pfad:
+The server loads the following workspace files from the path configured via OPENCLAW_WORKSPACE:
 
-| Datei | Beschreibung |
-|---|---|
-| `MEMORY.md` | Langzeit-Gedächtnis & Notizen |
-| `AGENTS.md` | Agent-Konfiguration |
-| `SOUL.md` | Persönlichkeit & Verhalten |
-| `USER.md` | Nutzer-Informationen |
-| `TOOLS.md` | Tool-Dokumentation |
-| `IDENTITY.md` | Identität |
-| `HEARTBEAT.md` | Periodische Aufgaben |
+| File           | Description              |
+| -------------- | ------------------------ |
+| `MEMORY.md`    | Long-term memory & notes |
+| `AGENTS.md`    | Agent configuration      |
+| `SOUL.md`      | Personality & behavior   |
+| `USER.md`      | User information         |
+| `TOOLS.md`     | Tool documentation       |
+| `IDENTITY.md`  | Identity                 |
+| `HEARTBEAT.md` | Periodic tasks           |
 
-Falls der Standard-Pfad nicht passt, kann er per Umgebungsvariable überschrieben werden:
+
+If the default path is not suitable, it can be overridden using an environment variable:
 
 ```bash
 OPENCLAW_WORKSPACE=/custom/path PORT=3000 node app.js
 ```
 
-## Projekt-Struktur
+## Project-Structure
 
-### Erwartete Workspace-Struktur
+### Expected Workspace Structure
 
 ```
-~/.openclaw/workspace/       # Standard OpenClaw Workspace
-├── kanban/                  # Das Kanban Board
-├── projects/                # Deine Projekte (optional)
-│   ├── mein-projekt/
-│   │   ├── features/           # Feature Specifications
-│   │   ├── docs/            # Dokumentation
-│   │   └── src/             # Source Code
-│   └── anderes-projekt/
-├── AGENTS.md                # Bootstrap-File (automatisch injected)
-├── SOUL.md                  # Bootstrap-File (automatisch injected)
-├── MEMORY.md                # Langzeit-Gedächtnis
-├── IDENTITY.md              # Bootstrap-File (automatisch injected)
-├── USER.md                  # Bootstrap-File (automatisch injected)
-├── HEARTBEAT.md             # Bootstrap-File (automatisch injected)
-└── TOOLS.md                 # Bootstrap-File (automatisch injected)
+~/.openclaw/workspace/       # Default OpenClaw workspace
+├── kanban/                  # The Kanban board
+├── projects/                # Your projects (optional)
+│   ├── my-project/
+│   │   ├── features/        # Feature specifications
+│   │   ├── docs/            # Documentation
+│   │   └── src/             # Source code
+│   └── another-project/
+├── AGENTS.md                # Bootstrap file (automatically injected)
+├── SOUL.md                  # Bootstrap file (automatically injected)
+├── MEMORY.md                # Long-term memory
+├── IDENTITY.md              # Bootstrap file (automatically injected)
+├── USER.md                  # Bootstrap file (automatically injected)
+├── HEARTBEAT.md             # Bootstrap file (automatically injected)
+└── TOOLS.md                 # Bootstrap file (automatically injected)
 ```
 
-### Daten-Dateien
+### Data Files
 
-- `tasks.json` - Alle Projekte und Aufgaben
-- `activity.json` - Aktivitäten-Log
-- `agent-status.json` - Agent-Status (Verfügbar/Beschäftigt)
+- `tasks.json` - All Projects and Tasks
+- `activity.json` - Activity Log
+- `agent-status.json` - Agent-Status (Available/Busy)
 
-### Projekt-Schema (tasks.json)
+### Project-Schema (tasks.json)
 
 ```json
 {
   "id": "proj-xxx",
-  "name": "Projektname",
-  "description": "Beschreibung",
-  "projectPath": "/home/node/clawd/projects/mein-projekt",
+  "name": "Project Name",
+  "description": "Description",
+  "projectPath": "/home/node/clawd/projects/my-project",
   "tasks": [
     {
       "id": "PROJ-1",
@@ -127,56 +128,56 @@ OPENCLAW_WORKSPACE=/custom/path PORT=3000 node app.js
 }
 ```
 
-**Wichtig**: `projectPath` muss immer ein **absoluter Pfad** sein, damit der File Browser funktioniert.
+**Important:** projectPath must always be an absolute path for the File Browser to work correctly.
 
-### Feature-Specs verknüpfen
+### Link Feature Specifications
 
-Feature-Spezifikationen im `features/`-Ordner des Projekts ablegen und per `featureFile` im Task verknüpfen:
+Store feature specifications in the project's features/ directory and link them to the task using the featureFile field.
 
 ```
-/projects/mein-projekt/features/PROJ-1-user-auth.md
+/projects/my-project/features/PROJ-1-user-auth.md
 ```
 
-Namenskonvention: `PROJ-{nummer}-{feature-name}.md`
+Naming Convention: PROJ-{number}-{feature-name}.md
 
 ## API Endpoints
 
 ```bash
-# Projekte
-GET    /api/projects              # Alle Projekte abrufen
-POST   /api/projects              # Neues Projekt erstellen
-GET    /api/projects/:id          # Einzelnes Projekt
+Projects
+GET    /api/projects              # Retrieve all projects
+POST   /api/projects              # Create a new project
+GET    /api/projects/:id          # Retrieve a single project
 
-# Tasks
-POST   /api/projects/:id/tasks    # Task hinzufügen
-PUT    /api/tasks/:id             # Task aktualisieren (z.B. Status ändern)
+Tasks
+POST   /api/projects/:id/tasks    # Add a task
+PUT    /api/tasks/:id             # Update a task (e.g., change status)
 
-# Context & Files
-GET    /api/context-files         # Context-Dateien auflisten
+Context & Files
+GET    /api/context-files         # List context files
 GET    /api/files/:projectId/*    # File Browser API
 
-# Activity
+Activity
 GET    /api/activity              # Activity Log
 ```
 
-### Beispiele
+### Examples
 
 ```bash
-# Projekt mit projectPath erstellen
+Create a Project with projectPath
 curl -X POST http://localhost:3000/api/projects \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Mein Projekt",
-    "description": "Beschreibung",
-    "projectPath": "/home/node/clawd/projects/mein-projekt"
+    "name": "My Project",
+    "description": "Project description",
+    "projectPath": "/home/node/clawd/projects/my-project"
   }'
 
-# Task Status ändern
+Change a Task Status
 curl -X PUT http://localhost:3000/api/tasks/PROJ-1 \
   -H "Content-Type: application/json" \
   -d '{"status": "in-progress"}'
 
-# Task mit Feature-File erstellen
+Create a Task with a Feature File
 curl -X POST http://localhost:3000/api/projects/{projectId}/tasks \
   -H "Content-Type: application/json" \
   -d '{
@@ -189,33 +190,34 @@ curl -X POST http://localhost:3000/api/projects/{projectId}/tasks \
 
 ## Troubleshooting
 
-**Server startet nicht?**
+**Server not starting?**
 ```bash
-# Port prüfen
+# Check if port 3000 is in use
 lsof -i :3000
-# Process beenden falls belegt
+
+# Terminate the process if the port is occupied
 kill -9 <PID>
 ```
 
-**File Browser zeigt keine Dateien?**
-- `projectPath` in tasks.json prüfen — muss ein absoluter Pfad sein
-- `update-projects.js` ausführen um Pfade nachträglich zu setzen
+**File Browser not showing any files?**
+- Verify the `projectPath` value in `tasks.json` — it must be an absolute path.
+- Run `update-projects.js` to add or correct project paths after the fact.
 
-**Context Files fehlen?**
-- Dateien müssen im per `OPENCLAW_WORKSPACE` konfigurierten Pfad liegen
-- Prüfen: `curl http://localhost:3000/api/context-files`
+**Context Files Missing?**
+- Ensure the files are located in the path specified by `OPENCLAW_WORKSPACE`.
+- Check by running: `curl http://localhost:3000/api/context-files`
 
-**Status wird nicht aktualisiert?**
-- `agent-status.json` muss im kanban-Ordner liegen und schreibbar sein
+**Status not updating?**
+- Ensure that `agent-status.json` is located in the `kanban` folder and has write permissions.
 
 ## Contributing
 
-Contributions sind willkommen! Siehe [CONTRIBUTING.md](CONTRIBUTING.md) für Details.
+Contributions are welcome! See CONTRIBUTING.md for details.
 
 ## License
 
-MIT License — siehe [LICENSE](LICENSE).
+MIT License — see LICENSE.
 
 ---
 
-Entwickelt für die OpenClaw Community.
+Developed for the OpenClaw community.
