@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import './KanbanBoard.css'
 
 const columns = [
@@ -15,19 +15,44 @@ function KanbanBoard({ project, onTaskUpdate, onTaskAdd }) {
     return <div className="empty-board">Kein Projekt ausgewählt</div>
   }
 
+  // Optimized grouping (prevents repeated filtering)
+  const tasksByColumn = useMemo(() => {
+    const grouped = {
+      todo: [],
+      'in-progress': [],
+      review: [],
+      done: []
+    }
+
+    project?.tasks?.forEach(task => {
+      if (grouped[task.status]) {
+        grouped[task.status].push(task)
+      }
+    })
+
+    return grouped
+  }, [project])
+
   const handleAddTask = async (columnId) => {
     const title = newTaskInputs[columnId]?.trim()
     if (!title) return
 
     await onTaskAdd(columnId, title)
-    setNewTaskInputs({ ...newTaskInputs, [columnId]: '' })
+
+    setNewTaskInputs(prev => ({
+      ...prev,
+      [columnId]: ''
+    }))
   }
 
   const handleInputChange = (columnId, value) => {
-    setNewTaskInputs({ ...newTaskInputs, [columnId]: value })
+    setNewTaskInputs(prev => ({
+      ...prev,
+      [columnId]: value
+    }))
   }
 
-  const handleKeyPress = (e, columnId) => {
+  const handleKeyDown = (e, columnId) => {
     if (e.key === 'Enter') {
       handleAddTask(columnId)
     }
@@ -43,7 +68,12 @@ function KanbanBoard({ project, onTaskUpdate, onTaskAdd }) {
 
   const handleDrop = async (e, targetColumnId) => {
     e.preventDefault()
-    const task = JSON.parse(e.dataTransfer.getData('task'))
+
+    const data = e.dataTransfer.getData('task')
+    if (!data) return
+
+    const task = JSON.parse(data)
+
     if (task.status !== targetColumnId) {
       await onTaskUpdate(task.id, { status: targetColumnId })
     }
@@ -52,11 +82,11 @@ function KanbanBoard({ project, onTaskUpdate, onTaskAdd }) {
   return (
     <div className="kanban-board">
       {columns.map(column => {
-        const columnTasks = project.tasks?.filter(task => task.status === column.id) || []
-        
+        const columnTasks = tasksByColumn[column.id] || []
+
         return (
-          <div 
-            key={column.id} 
+          <div
+            key={column.id}
             className="kanban-column"
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, column.id)}
@@ -66,40 +96,48 @@ function KanbanBoard({ project, onTaskUpdate, onTaskAdd }) {
               <span className="column-title">{column.title}</span>
               <span className="task-count">{columnTasks.length}</span>
             </div>
-            
+
             <div className="tasks-list">
               {columnTasks.length === 0 ? (
                 <div className="empty-state">Keine Aufgaben</div>
               ) : (
                 columnTasks.map(task => (
-                  <div 
+                  <div
                     key={task.id}
                     className={`task-card ${task.featureFile ? 'has-feature' : ''}`}
                     draggable
                     onDragStart={(e) => handleDragStart(e, task)}
                   >
                     <div className="task-title">{task.title}</div>
+
                     {task.description && (
-                      <div className="task-description">{task.description}</div>
+                      <div className="task-description">
+                        {task.description}
+                      </div>
                     )}
+
                     <div className="task-meta">
                       {task.priority && (
                         <span className={`task-priority priority-${task.priority}`}>
                           {task.priority}
                         </span>
                       )}
+
                       {task.featureFile && (
                         <span className="task-feature">
                           📄 {task.featureFile}
                         </span>
                       )}
-                      {task.date && <span className="task-date">{task.date}</span>}
+
+                      {task.date && (
+                        <span className="task-date">{task.date}</span>
+                      )}
                     </div>
                   </div>
                 ))
               )}
             </div>
-            
+
             <div className="add-task-input">
               <input
                 type="text"
@@ -107,7 +145,7 @@ function KanbanBoard({ project, onTaskUpdate, onTaskAdd }) {
                 className="task-input"
                 value={newTaskInputs[column.id] || ''}
                 onChange={(e) => handleInputChange(column.id, e.target.value)}
-                onKeyPress={(e) => handleKeyPress(e, column.id)}
+                onKeyDown={(e) => handleKeyDown(e, column.id)}
               />
             </div>
           </div>
