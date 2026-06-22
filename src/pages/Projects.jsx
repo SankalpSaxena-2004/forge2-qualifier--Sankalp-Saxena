@@ -30,7 +30,7 @@ function Projects({ projects, activeProjectId, setActiveProjectId, fetchProjects
           priority: 'medium'
         })
       })
-      
+
       if (response.ok) {
         await fetchProjects()
       }
@@ -46,7 +46,7 @@ function Projects({ projects, activeProjectId, setActiveProjectId, fetchProjects
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updates)
       })
-      
+
       if (response.ok) {
         await fetchProjects()
       }
@@ -59,8 +59,8 @@ function Projects({ projects, activeProjectId, setActiveProjectId, fetchProjects
     return (
       <div className="projects-page">
         <div className="no-project-selected">
-          <h2>Kein Projekt ausgewählt</h2>
-          <p>Wähle ein Projekt aus der Seitenleiste aus</p>
+          <h2>No Project Selected</h2>
+          <p>Select a project from the sidebar</p>
         </div>
       </div>
     )
@@ -76,19 +76,21 @@ function Projects({ projects, activeProjectId, setActiveProjectId, fetchProjects
       </div>
 
       <div className="project-tabs">
-        <button 
+        <button
           className={`tab ${activeTab === 'board' ? 'active' : ''}`}
           onClick={() => setActiveTab('board')}
         >
           📋 Board
         </button>
-        <button 
+
+        <button
           className={`tab ${activeTab === 'files' ? 'active' : ''}`}
           onClick={() => setActiveTab('files')}
         >
           📁 Files
         </button>
-        <button 
+
+        <button
           className={`tab ${activeTab === 'context' ? 'active' : ''}`}
           onClick={() => setActiveTab('context')}
         >
@@ -97,7 +99,7 @@ function Projects({ projects, activeProjectId, setActiveProjectId, fetchProjects
       </div>
 
       {activeTab === 'board' && (
-        <KanbanBoard 
+        <KanbanBoard
           project={project}
           onTaskAdd={handleTaskAdd}
           onTaskUpdate={handleTaskUpdate}
