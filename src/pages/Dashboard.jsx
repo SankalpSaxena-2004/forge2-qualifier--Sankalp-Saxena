@@ -22,7 +22,7 @@ function Dashboard({ projects }) {
     let totalTasks = 0
     let completedTasks = 0
     let inProgressTasks = 0
-    
+
     projects.forEach(project => {
       const tasks = project.tasks || []
       totalTasks += tasks.length
@@ -39,42 +39,48 @@ function Dashboard({ projects }) {
     <div className="dashboard-page">
       <div className="dashboard-header">
         <h1>Dashboard</h1>
-        <p>Überblick über alle Projekte und Aktivitäten</p>
+        <p>Overview of all projects and activities</p>
       </div>
 
       <div className="dashboard-stats">
         <div className="stat-card">
           <div className="stat-value">{projects.length}</div>
-          <div className="stat-label">Projekte</div>
+          <div className="stat-label">Projects</div>
         </div>
+
         <div className="stat-card">
           <div className="stat-value">{stats.totalTasks}</div>
-          <div className="stat-label">Aufgaben gesamt</div>
+          <div className="stat-label">Total Tasks</div>
         </div>
+
         <div className="stat-card">
           <div className="stat-value">{stats.inProgressTasks}</div>
-          <div className="stat-label">In Arbeit</div>
+          <div className="stat-label">In Progress</div>
         </div>
+
         <div className="stat-card">
           <div className="stat-value">{stats.completedTasks}</div>
-          <div className="stat-label">Erledigt</div>
+          <div className="stat-label">Completed</div>
         </div>
       </div>
 
       <div className="dashboard-content">
         <div className="dashboard-projects">
-          <h2>📁 Projekte</h2>
+          <h2>📁 Projects</h2>
+
           <div className="project-grid">
             {projects.map(project => (
-              <div 
-                key={project.id} 
+              <div
+                key={project.id}
                 className="project-card"
                 style={{ borderTopColor: project.color }}
               >
                 <h3>{project.name}</h3>
-                <p>{project.description || 'Keine Beschreibung'}</p>
+
+                <p>{project.description || 'No description available'}</p>
+
                 <div className="project-stats">
-                  <span>📋 {project.tasks?.length || 0} Aufgaben</span>
+                  <span>📋 {project.tasks?.length || 0} Tasks</span>
                 </div>
               </div>
             ))}
@@ -82,20 +88,28 @@ function Dashboard({ projects }) {
         </div>
 
         <div className="dashboard-activity">
-          <h2>📜 Letzte Aktivitäten</h2>
+          <h2>📜 Recent Activities</h2>
+
           <div className="activity-list">
             {activities.length === 0 ? (
-              <p className="no-activities">Keine Aktivitäten</p>
+              <p className="no-activities">No activities available</p>
             ) : (
               activities.map((activity, index) => (
                 <div key={activity.id || index} className="activity-item">
                   <div className="activity-time">
-                    {new Date(activity.timestamp).toLocaleString('de-DE')}
+                    {new Date(activity.timestamp).toLocaleString('en-US')}
                   </div>
+
                   <div className="activity-content">
-                    <div className="activity-title">{activity.title}</div>
-                    <div className="activity-description">{activity.description}</div>
+                    <div className="activity-title">
+                      {activity.title}
+                    </div>
+
+                    <div className="activity-description">
+                      {activity.description}
+                    </div>
                   </div>
+
                   <div className={`activity-status ${activity.status}`}>
                     {activity.status}
                   </div>
