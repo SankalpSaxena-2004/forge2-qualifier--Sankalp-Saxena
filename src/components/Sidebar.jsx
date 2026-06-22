@@ -5,7 +5,7 @@ import './Sidebar.css'
 function Sidebar({ projects = [], activeProjectId, setActiveProjectId }) {
   const [agentStatus, setAgentStatus] = useState({
     status: 'available',
-    text: 'Verfügbar'
+    text: 'Available'
   })
   const [projectsExpanded, setProjectsExpanded] = useState(false)
 
@@ -71,14 +71,14 @@ function Sidebar({ projects = [], activeProjectId, setActiveProjectId }) {
           role="button"
         >
           <span className="nav-icon">📁</span>
-          <span className="nav-label">Projekte</span>
+          <span className="nav-label">Projects</span>
         </div>
 
         {projectsExpanded && (
           <div className="nav-submenu">
             <div className="projects-list">
               {projects.length === 0 ? (
-                <div className="empty-projects">Keine Projekte</div>
+                <div className="empty-projects">No Projects</div>
               ) : (
                 projects.map(project => (
                   <div
@@ -100,7 +100,7 @@ function Sidebar({ projects = [], activeProjectId, setActiveProjectId }) {
               className="add-project-btn"
               onClick={() => console.log('Create project clicked')}
             >
-              + Neues Projekt
+              + New Project
             </button>
           </div>
         )}
@@ -110,7 +110,7 @@ function Sidebar({ projects = [], activeProjectId, setActiveProjectId }) {
           className={`nav-item ${isActiveTab('/activities') ? 'active' : ''}`}
         >
           <span className="nav-icon">📜</span>
-          <span className="nav-label">Aktivitäten</span>
+          <span className="nav-label">Activities</span>
         </Link>
 
         <Link
@@ -118,7 +118,7 @@ function Sidebar({ projects = [], activeProjectId, setActiveProjectId }) {
           className={`nav-item ${isActiveTab('/context') ? 'active' : ''}`}
         >
           <span className="nav-icon">🧠</span>
-          <span className="nav-label">Context-Speicher</span>
+          <span className="nav-label">Context Storage</span>
         </Link>
       </nav>
     </aside>
