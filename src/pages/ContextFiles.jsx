@@ -19,7 +19,7 @@ function ContextFiles() {
       const response = await fetch('/api/context-files')
       const data = await response.json()
       setFiles(data.files || [])
-      
+
       // Auto-select first file
       if (data.files?.length > 0 && !selectedFile) {
         selectFile(data.files[0])
@@ -33,7 +33,7 @@ function ContextFiles() {
     setSelectedFile(file)
     setIsEditing(false)
     setShowPreview(false)
-    
+
     try {
       const response = await fetch(`/api/context-files/${file.name}`)
       const content = await response.text()
@@ -41,7 +41,7 @@ function ContextFiles() {
       setEditedContent(content)
     } catch (error) {
       console.error('Error loading file:', error)
-      setFileContent('Fehler beim Laden der Datei')
+      setFileContent('Error loading file')
     }
   }
 
@@ -52,7 +52,7 @@ function ContextFiles() {
         headers: { 'Content-Type': 'text/plain' },
         body: editedContent
       })
-      
+
       if (response.ok) {
         setFileContent(editedContent)
         setIsEditing(false)
@@ -73,10 +73,10 @@ function ContextFiles() {
     <div className="context-files-page">
       <div className="context-sidebar">
         <div className="context-header">
-          <h2>🧠 Context-Speicher</h2>
-          <p>Agent-Konfiguration & Memory</p>
+          <h2>🧠 Context Storage</h2>
+          <p>Agent Configuration & Memory</p>
         </div>
-        
+
         <div className="files-list">
           {files.map(file => (
             <div
@@ -84,7 +84,9 @@ function ContextFiles() {
               className={`file-item ${selectedFile?.name === file.name ? 'active' : ''} ${!file.exists ? 'missing' : ''}`}
               onClick={() => file.exists && selectFile(file)}
             >
-              <div className="file-size">{file.exists ? formatFileSize(file.size) : 'nicht vorhanden'}</div>
+              <div className="file-size">
+                {file.exists ? formatFileSize(file.size) : 'not found'}
+              </div>
               <div className="file-name">{file.name}</div>
               <div className="file-desc">{file.description}</div>
             </div>
@@ -100,30 +102,34 @@ function ContextFiles() {
                 <h3>{selectedFile.name}</h3>
                 <p>{selectedFile.description}</p>
               </div>
+
               <div className="editor-actions">
                 {!isEditing && (
                   <>
                     <button onClick={() => setShowPreview(!showPreview)}>
-                      {showPreview ? '📝 Editor' : '👁️ Vorschau'}
+                      {showPreview ? '📝 Editor' : '👁️ Preview'}
                     </button>
+
                     <button onClick={() => setIsEditing(true)}>
-                      ✏️ Bearbeiten
+                      ✏️ Edit
                     </button>
                   </>
                 )}
+
                 {isEditing && (
                   <>
                     <button onClick={() => setIsEditing(false)}>
-                      ❌ Abbrechen
+                      ❌ Cancel
                     </button>
+
                     <button onClick={handleSave} className="save-btn">
-                      💾 Speichern
+                      💾 Save
                     </button>
                   </>
                 )}
               </div>
             </div>
-            
+
             <div className="editor-content">
               {showPreview && !isEditing ? (
                 <div className="markdown-preview">
@@ -134,7 +140,7 @@ function ContextFiles() {
                   className="content-editor"
                   value={editedContent}
                   onChange={(e) => setEditedContent(e.target.value)}
-                  placeholder="Dateiinhalt bearbeiten..."
+                  placeholder="Edit file content..."
                 />
               ) : (
                 <pre className="content-viewer">{fileContent}</pre>
