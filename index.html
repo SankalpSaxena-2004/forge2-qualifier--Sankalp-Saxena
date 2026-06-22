@@ -1087,25 +1087,25 @@
             <!-- Projects Menu Item -->
             <div class="nav-item" data-tab="projects" onclick="switchTab('projects')">
                 <span class="nav-icon">📁</span>
-                <span class="nav-label">Projekte</span>
+                <span class="nav-label">Projects</span>
             </div>
             
             <!-- Projects Submenu (indented) -->
             <div id="projectsSubmenu" class="nav-submenu">
                 <div class="projects-list" id="projectsList"></div>
-                <button class="add-project-btn" onclick="openProjectModal()">+ Neues Projekt</button>
+                <button class="add-project-btn" onclick="openProjectModal()">New Project</button>
             </div>
             
             <!-- Status Menu Item -->
             <div class="nav-item" data-tab="status" onclick="switchTab('status')">
                 <span class="nav-icon">📜</span>
-                <span class="nav-label">Aktivitäten</span>
+                <span class="nav-label">Activities</span>
             </div>
             
             <!-- Context Files Menu Item -->
             <div class="nav-item" data-tab="context" onclick="switchTab('context')">
                 <span class="nav-icon">🧠</span>
-                <span class="nav-label">Context-Speicher</span>
+                <span class="nav-label">Context Storage</span>
             </div>
         </div>
     </div>
@@ -1116,13 +1116,13 @@
         <div class="dashboard-section" id="dashboardSection">
             <div class="dashboard-header">
                 <h1>🏠 Dashboard</h1>
-                <p>Willkommen zurück!</p>
+                <p>Welcome back!</p>
             </div>
             
             <div class="dashboard-stats">
                 <div class="stat-card">
                     <div class="stat-number" id="dashboardProjectCount">0</div>
-                    <div class="stat-label">Projekte</div>
+                    <div class="stat-label">Projects</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number" id="dashboardTaskCount">0</div>
@@ -1130,12 +1130,12 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-number" id="dashboardDoneCount">0</div>
-                    <div class="stat-label">Erledigt</div>
+                    <div class="stat-label">Completed</div>
                 </div>
             </div>
             
             <div class="dashboard-activity">
-                <h2>📜 Letzte Aktivitäten</h2>
+                <h2>📜 Recent Activities</h2>
                 <div id="dashboardActivityList" class="activity-log" style="max-height: 500px; overflow-y: auto;"></div>
             </div>
         </div>
@@ -1145,7 +1145,7 @@
             <!-- Project Header -->
             <div class="board-header">
                 <div class="board-header-info">
-                    <h1 id="projectTitle">Projekt auswählen</h1>
+                    <h1 id="projectTitle">Select Project</h1>
                     <p id="projectDesc"></p>
                 </div>
             </div>
@@ -1170,11 +1170,11 @@
             <div class="file-browser-container" id="fileBrowserContainer">
                 <div class="file-tree-panel" id="fileTreePanel">
                     <div class="file-tree-header">
-                        <span>📂</span> Dateien
+                        <span>📂</span> Files
                     </div>
                     <div class="file-tree" id="fileTree">
                         <div class="editor-empty">
-                            <div class="editor-empty-text">Lade Dateibaum...</div>
+                            <div class="editor-empty-text">Loading File Tree...</div>
                         </div>
                     </div>
                 </div>
@@ -1189,15 +1189,15 @@
                         </div>
                         <div class="editor-actions">
                             <button class="editor-btn editor-btn-save" id="editorSaveBtn" onclick="saveCurrentFile()" disabled>
-                                Speichern
+                                Save
                             </button>
                         </div>
                     </div>
                     <div class="editor-content" id="editorContent">
                         <div class="editor-empty" id="editorEmpty">
                             <div class="editor-empty-icon">📝</div>
-                            <div class="editor-empty-text">Datei auswählen</div>
-                            <div class="editor-empty-hint">Klicke auf eine Datei im Baum links</div>
+                            <div class="editor-empty-text">Select a File</div>
+                            <div class="editor-empty-hint">Click a file in the tree on the left</div>
                         </div>
                     </div>
                 </div>
@@ -1208,10 +1208,10 @@
                 <div class="context-content-wrapper">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                         <div class="docs-header" style="margin: 0;">📚 Projekt Kontext</div>
-                        <button onclick="openDocsModal()" style="background: none; border: 1px solid var(--border); color: var(--text-secondary); padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; font-size: 0.75rem; transition: all 0.15s ease;" onmouseover="this.style.borderColor='var(--accent)'; this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-secondary)'">Bearbeiten</button>
+                        <button onclick="openDocsModal()" style="background: none; border: 1px solid var(--border); color: var(--text-secondary); padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; font-size: 0.75rem; transition: all 0.15s ease;" onmouseover="this.style.borderColor='var(--accent)'; this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-secondary)'">Edit</button>
                     </div>
                     <div class="docs-content" id="docsContent">
-                        <p>Projekt auswählen um Dokumentation zu sehen</p>
+                        <p>Select a project to view documentation</p>
                     </div>
                 </div>
             </div>
@@ -1222,12 +1222,12 @@
     <div class="modal" id="docsModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeDocsModal()">✕</button>
-            <div class="modal-header">Kontext bearbeiten</div>
+            <div class="modal-header">Edit Context</div>
             <div class="form-group">
-                <label>Markdown Inhalt</label>
+                <label>Markdown Content</label>
                 <textarea id="docsInput" style="min-height: 300px;"></textarea>
             </div>
-            <button class="btn" onclick="saveDocs()">Speichern</button>
+            <button class="btn" onclick="saveDocs()">Save</button>
         </div>
     </div>
 
@@ -1235,20 +1235,20 @@
     <div class="modal" id="projectModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeProjectModal()">✕</button>
-            <div class="modal-header">Neues Projekt</div>
+            <div class="modal-header">New Project</div>
             <div class="form-group">
-                <label>Projektname</label>
+                <label>Project Name</label>
                 <input type="text" id="projectNameInput" placeholder="z.B. Mobile App">
             </div>
             <div class="form-group">
-                <label>Beschreibung</label>
+                <label>Description</label>
                 <textarea id="projectDescInput" placeholder="Kurze Beschreibung..."></textarea>
             </div>
             <div class="form-group">
-                <label>Dokumentation</label>
+                <label>Documentation</label>
                 <textarea id="projectDocsInput" placeholder="# Projekt&#10;&#10;Dokumentation hinzufügen..." style="min-height: 150px;"></textarea>
             </div>
-            <button class="btn" onclick="createProject()">Erstellen</button>
+            <button class="btn" onclick="createProject()">Create</button>
         </div>
     </div>
 
@@ -1260,14 +1260,14 @@
             <div class="form-group">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
                     <label>Inhalt (Markdown)</label>
-                    <button onclick="toggleTaskPreview()" style="background: none; border: 1px solid var(--border); color: var(--text-secondary); padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; font-size: 0.75rem;" id="previewToggle">Vorschau</button>
+                    <button onclick="toggleTaskPreview()" style="background: none; border: 1px solid var(--border); color: var(--text-secondary); padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; font-size: 0.75rem;" id="previewToggle">Preview</button>
                 </div>
                 <textarea id="taskContentInput" style="min-height: 400px; font-family: 'Courier New', monospace; font-size: 0.85rem;"></textarea>
                 <div id="taskContentPreview" class="docs-content" style="display: none; min-height: 400px; max-height: 500px; overflow-y: auto; padding: 1rem; background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px;"></div>
             </div>
             <div style="display: flex; gap: 0.5rem;">
-                <button class="btn" onclick="saveTaskContent()" style="flex: 1;">Speichern</button>
-                <button class="btn" onclick="closeTaskModal()" style="flex: 0; background: var(--bg-tertiary); border: 1px solid var(--border);">Abbrechen</button>
+                <button class="btn" onclick="saveTaskContent()" style="flex: 1;">Save</button>
+                <button class="btn" onclick="closeTaskModal()" style="flex: 0; background: var(--bg-tertiary); border: 1px solid var(--border);">Cancel</button>
             </div>
         </div>
     </div>
@@ -1275,8 +1275,8 @@
     <!-- Status View (Activity Log) -->
     <div id="statusView" style="display: none; position: fixed; left: 260px; top: 0; right: 0; height: 100vh; flex-direction: column; padding: 2rem; overflow-y: auto; justify-content: flex-start; align-items: center; box-sizing: border-box;">
         <div style="margin-bottom: 2rem; width: 100%; max-width: 800px; text-align: center;">
-            <h1 style="font-size: 1.8rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">📜 Aktivitäten</h1>
-            <p style="color: var(--text-secondary);">Alle Entwicklungstätigkeiten</p>
+            <h1 style="font-size: 1.8rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">📜 Activities</h1>
+            <p style="color: var(--text-secondary);">All Development Activities</p>
         </div>
 
         <div id="activityList" class="activity-log" style="width: 100%; max-width: 800px;">
@@ -1290,8 +1290,8 @@
             <!-- Files List -->
             <div style="width: 280px; min-width: 280px; background: var(--bg-secondary); border-right: 1px solid var(--border); padding: 1.5rem; overflow-y: auto; box-sizing: border-box;">
                 <div style="margin-bottom: 1.5rem;">
-                    <h2 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">🧠 Context-Speicher</h2>
-                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Agent-Konfiguration & Memory</p>
+                    <h2 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">🧠 Context Storage</h2>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Agent Configuration & Memory</p>
                 </div>
                 <div id="contextFilesList" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
             </div>
@@ -1300,12 +1300,12 @@
             <div style="flex: 1; display: flex; flex-direction: column; padding: 1.5rem; min-width: 0; overflow: auto; box-sizing: border-box;">
                 <div id="contextEditorHeader" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); flex-shrink: 0;">
                     <div style="min-width: 0; flex: 1;">
-                        <h3 id="contextFileName" style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">Datei auswählen</h3>
+                        <h3 id="contextFileName" style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">Select a File</h3>
                         <p id="contextFileDesc" style="font-size: 0.8rem; color: var(--text-secondary);"></p>
                     </div>
                     <div style="display: flex; gap: 0.5rem; flex-shrink: 0;">
-                        <button id="contextPreviewBtn" onclick="toggleContextPreview()" style="background: var(--bg-tertiary); border: 1px solid var(--border); color: var(--text-secondary); padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem; white-space: nowrap;">Vorschau</button>
-                        <button id="contextSaveBtn" onclick="saveContextFile()" style="background: var(--accent); border: none; color: white; padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem; display: none; white-space: nowrap;">Speichern</button>
+                        <button id="contextPreviewBtn" onclick="toggleContextPreview()" style="background: var(--bg-tertiary); border: 1px solid var(--border); color: var(--text-secondary); padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem; white-space: nowrap;">Preview</button>
+                        <button id="contextSaveBtn" onclick="saveContextFile()" style="background: var(--accent); border: none; color: white; padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem; display: none; white-space: nowrap;">Save</button>
                     </div>
                 </div>
                 <textarea id="contextEditor" style="flex: 1; width: 100%; background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary); padding: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem; resize: none; line-height: 1.6; box-sizing: border-box; min-height: 300px;" placeholder="Datei auswählen..."></textarea>
@@ -1317,11 +1317,10 @@
 
     <script>
         const columns = [
-            { id: 'todo', title: 'Offen', icon: '📋' },
-            { id: 'in-progress', title: 'In Arbeit', icon: '⚡' },
-            { id: 'review', title: 'Review', icon: '👀' },
-            { id: 'done', title: 'Erledigt', icon: '✅' }
-        ];
+            { id: 'todo', title: 'Backlog', icon: '📋' },
+            { id: 'in-progress', title: 'In Progress', icon: '⚡' },
+            { id: 'review', title: 'Code Review', icon: '👀' },
+            { id: 'done', title: 'Done', icon: '✅' }];
 
         let activeProjectId = localStorage.getItem('lastProjectId') || null;
 
@@ -1437,7 +1436,7 @@
                 `).join('');
 
                 if (!tasksHtml) {
-                    tasksHtml = '<div class="empty-state">Keine Aufgaben</div>';
+                    tasksHtml = '<div class="empty-state">No Tasks</div>';
                 }
 
                 columnEl.innerHTML = `
@@ -1448,7 +1447,7 @@
                     </div>
                     <div class="tasks-list">${tasksHtml}</div>
                     <div class="add-task-input">
-                        <input type="text" placeholder="Aufgabe hinzufügen..." class="task-input" data-column="${column.id}">
+                        <input type="text" placeholder="Add Task..." class="task-input" data-column="${column.id}">
                     </div>
                 `;
 
@@ -1487,7 +1486,7 @@
             const description = document.getElementById('projectDescInput').value;
             const docs = document.getElementById('projectDocsInput').value;
 
-            if (!name.trim()) return alert('Projektname erforderlich');
+            if (!name.trim()) return alert('Project name required');
 
             try {
                 await fetch('/api/projects', {
@@ -1518,7 +1517,7 @@
         }
 
         function openDocsModal() {
-            if (!activeProjectId) return alert('Bitte zuerst ein Projekt auswählen');
+            if (!activeProjectId) return alert('Please set the project path in project settings.');
             const projects = document.querySelector('.projects-list').innerHTML;
             fetchProjects().then(projects => {
                 const project = projects.find(p => p.id === activeProjectId);
@@ -1549,7 +1548,7 @@
                 selectProject(activeProjectId); // Refresh docs display
             } catch (error) {
                 console.error('Error saving docs:', error);
-                alert('Fehler beim Speichern');
+                alert('Error loading');
             }
         }
 
@@ -1622,7 +1621,7 @@
                             </div>
                         `).join('');
                     } else {
-                        activityList.innerHTML = '<div style="color: var(--text-secondary); padding: 1rem;">Keine Aktivitäten vorhanden</div>';
+                        activityList.innerHTML = '<div style="color: var(--text-secondary); padding: 1rem;">No activities available</div>';
                     }
                 }
             } catch (error) {
@@ -1649,7 +1648,7 @@
                          data-file="${file.name}" 
                          onclick="selectContextFile('${file.name}')"
                          style="opacity: ${file.exists ? '1' : '0.5'};">
-                        <div class="project-id" style="font-size: 0.65rem;">${file.exists ? formatFileSize(file.size) : 'nicht vorhanden'}</div>
+                        <div class="project-id" style="font-size: 0.65rem;">${file.exists ? formatFileSize(file.size) : 'Not available'}</div>
                         <div class="project-name" style="font-size: 0.85rem;">${file.name}</div>
                         <div style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 0.2rem;">${file.description}</div>
                     </div>
@@ -1667,7 +1666,7 @@
         async function selectContextFile(filename) {
             // Check for unsaved changes
             if (activeContextFile && document.getElementById('contextEditor').value !== originalContextContent) {
-                if (!confirm('Ungespeicherte Änderungen verwerfen?')) {
+                if (!confirm('Discard unsaved changes?')) {
                     return;
                 }
             }
@@ -1696,9 +1695,9 @@
                 
                 if (data.modifiedAt) {
                     document.getElementById('contextMeta').textContent = 
-                        `Zuletzt geändert: ${new Date(data.modifiedAt).toLocaleString('de-DE')} · ${formatFileSize(data.size)}`;
+                        `Last modified: ${new Date(data.modifiedAt).toLocaleString('de-DE')} · ${formatFileSize(data.size)}`;
                 } else {
-                    document.getElementById('contextMeta').textContent = 'Neue Datei';
+                    document.getElementById('contextMeta').textContent = 'New File';
                 }
             } catch (error) {
                 console.error('Error loading context file:', error);
@@ -1715,11 +1714,11 @@
                 preview.innerHTML = marked.parse(editor.value);
                 editor.style.display = 'none';
                 preview.style.display = 'block';
-                btn.textContent = 'Bearbeiten';
+                btn.textContent = 'Edit';
             } else {
                 editor.style.display = 'block';
                 preview.style.display = 'none';
-                btn.textContent = 'Vorschau';
+                btn.textContent = 'Preview';
             }
         }
 
@@ -1739,14 +1738,14 @@
                     const data = await response.json();
                     originalContextContent = content;
                     document.getElementById('contextMeta').textContent = 
-                        `Gespeichert: ${new Date(data.modifiedAt).toLocaleString('de-DE')} · ${formatFileSize(data.size)}`;
+                        `Saved: ${new Date(data.modifiedAt).toLocaleString('de-DE')} · ${formatFileSize(data.size)}`;
                     
                     // Kurze visuelle Bestätigung
                     const btn = document.getElementById('contextSaveBtn');
-                    btn.textContent = '✓ Gespeichert';
+                    btn.textContent = '✓ Saved';
                     btn.style.background = 'var(--success)';
                     setTimeout(() => {
-                        btn.textContent = 'Speichern';
+                        btn.textContent = 'Save';
                         btn.style.background = 'var(--accent)';
                     }, 1500);
                     
@@ -1756,7 +1755,7 @@
                 }
             } catch (error) {
                 console.error('Error saving context file:', error);
-                alert('Fehler beim Speichern');
+                alert('Error while saving');
             }
         }
 
@@ -1820,7 +1819,7 @@
             isPreviewMode = false;
             document.getElementById('taskContentInput').style.display = 'block';
             document.getElementById('taskContentPreview').style.display = 'none';
-            document.getElementById('previewToggle').textContent = 'Vorschau';
+            document.getElementById('previewToggle').textContent = 'Preview';
             
             const projects = await fetchProjects();
             const project = projects.find(p => p.id === activeProjectId);
@@ -1836,11 +1835,11 @@
                         document.getElementById('taskContentInput').value = data.content;
                         document.getElementById('taskModal').classList.add('active');
                     } else {
-                        alert('Feature-Datei konnte nicht geladen werden');
+                        alert('Feature file could not be loaded');
                     }
                 } catch (error) {
                     console.error('Error loading feature:', error);
-                    alert('Fehler beim Laden');
+                    alert('Error loading');
                 }
             } else if (task) {
                 // Regular task or task without feature file - just show info
@@ -1865,11 +1864,11 @@
                 preview.innerHTML = marked.parse(input.value);
                 input.style.display = 'none';
                 preview.style.display = 'block';
-                toggle.textContent = 'Bearbeiten';
+                toggle.textContent = 'Edit';
             } else {
                 input.style.display = 'block';
                 preview.style.display = 'none';
-                toggle.textContent = 'Vorschau';
+                toggle.textContent = 'Preview';
             }
         }
 
@@ -1890,11 +1889,11 @@
                         closeTaskModal();
                         renderBoard();
                     } else {
-                        alert('Fehler beim Speichern');
+                        alert('Error while saving');
                     }
                 } catch (error) {
                     console.error('Error saving feature:', error);
-                    alert('Fehler beim Speichern');
+                    alert('Error while saving');
                 }
             } else {
                 // Update regular task description
@@ -1928,7 +1927,7 @@
                     if (data.synced > 0) {
                         alert(`${data.synced} Feature(s) synchronisiert!`);
                     } else {
-                        alert('Alle Features bereits synchronisiert');
+                        alert('All features already synchronized');
                     }
                     renderBoard();
                 }
@@ -1977,7 +1976,7 @@
             if (!activeProjectId) return;
             
             const fileTree = document.getElementById('fileTree');
-            fileTree.innerHTML = '<div class="editor-empty"><div class="editor-empty-text">Lade Dateibaum...</div></div>';
+            fileTree.innerHTML = '<div class="editor-empty"><div class="editor-empty-text">Loading File Tree...</div></div>';
             
             try {
                 const response = await fetch(`/api/projects/${activeProjectId}/files`);
@@ -1988,9 +1987,9 @@
                         fileTree.innerHTML = `
                             <div class="no-path-message">
                                 <div class="icon">📂</div>
-                                <div class="title">Kein Projektpfad</div>
-                                <div class="desc">Bitte setze den Projektpfad in den Projekteinstellungen.</div>
-                                <button class="set-path-btn" onclick="promptProjectPath()">Pfad setzen</button>
+                                <div class="title">No Project Path</div>
+                                <div class="desc">Please set the project path in project settings.</div>
+                                <button class="set-path-btn" onclick="promptProjectPath()">Set Path</button>
                             </div>
                         `;
                     } else {
@@ -2002,13 +2001,13 @@
                 fileTree.innerHTML = renderFileTree(data.tree, 0);
             } catch (error) {
                 console.error('Error loading file tree:', error);
-                fileTree.innerHTML = '<div class="editor-empty"><div class="editor-empty-text">Fehler beim Laden</div></div>';
+                fileTree.innerHTML = '<div class="editor-empty"><div class="editor-empty-text">Error loading</div></div>';
             }
         }
 
         function renderFileTree(items, depth) {
             if (!items || items.length === 0) {
-                return '<div class="editor-empty"><div class="editor-empty-text">Keine Dateien</div></div>';
+                return '<div class="editor-empty"><div class="editor-empty-text">No Files</div></div>';
             }
             
             let html = '';
@@ -2054,7 +2053,7 @@
         async function openFile(filePath) {
             // Check for unsaved changes
             if (hasUnsavedChanges) {
-                if (!confirm('Ungespeicherte Änderungen verwerfen?')) {
+                if (!confirm('Discard unsaved changes?')) {
                     return;
                 }
             }
@@ -2069,7 +2068,7 @@
                 const data = await response.json();
                 
                 if (data.error) {
-                    alert('Fehler: ' + data.error);
+                    alert('Error: ' + data.error);
                     return;
                 }
                 
@@ -2127,7 +2126,7 @@
                 
             } catch (error) {
                 console.error('Error opening file:', error);
-                alert('Fehler beim Öffnen der Datei');
+                alert('Error Opening File');
             }
         }
 
@@ -2154,7 +2153,7 @@
         function updateSaveButton() {
             const btn = document.getElementById('editorSaveBtn');
             btn.disabled = !hasUnsavedChanges;
-            btn.textContent = hasUnsavedChanges ? 'Speichern' : 'Gespeichert';
+            btn.textContent = hasUnsavedChanges ? 'Save' : 'Saved';
             btn.classList.toggle('saved', !hasUnsavedChanges);
         }
 
@@ -2164,7 +2163,7 @@
             const content = codeEditor.getValue();
             const btn = document.getElementById('editorSaveBtn');
             
-            btn.textContent = 'Speichern...';
+            btn.textContent = 'Save...';
             btn.disabled = true;
             
             try {
@@ -2179,7 +2178,7 @@
                 if (data.success) {
                     originalFileContent = content;
                     hasUnsavedChanges = false;
-                    btn.textContent = '✓ Gespeichert';
+                    btn.textContent = '✓ Saved';
                     btn.classList.add('saved');
                     
                     setTimeout(() => {
@@ -2187,13 +2186,13 @@
                     }, 1500);
                 } else {
                     alert('Fehler: ' + data.error);
-                    btn.textContent = 'Speichern';
+                    btn.textContent = 'Save';
                     btn.disabled = false;
                 }
             } catch (error) {
                 console.error('Error saving file:', error);
-                alert('Fehler beim Speichern');
-                btn.textContent = 'Speichern';
+                alert('Error while saving');
+                btn.textContent = 'Save';
                 btn.disabled = false;
             }
         }
@@ -2203,7 +2202,7 @@
             const project = projects.find(p => p.id === activeProjectId);
             
             const currentPath = project?.projectPath || '';
-            const newPath = prompt('Projektpfad eingeben:', currentPath);
+            const newPath = prompt('Enter Project Path:', currentPath);
             
             if (newPath && newPath.trim()) {
                 try {
@@ -2215,7 +2214,7 @@
                     loadFileTree();
                 } catch (error) {
                     console.error('Error setting path:', error);
-                    alert('Fehler beim Setzen des Pfads');
+                    alert('Error Setting Path');
                 }
             }
         }
