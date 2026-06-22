@@ -2,20 +2,19 @@ import React, { useState, useMemo } from 'react'
 import './KanbanBoard.css'
 
 const columns = [
-  { id: 'todo', title: 'Offen', icon: '📋' },
-  { id: 'in-progress', title: 'In Arbeit', icon: '⚡' },
+  { id: 'todo', title: 'To Do', icon: '📋' },
+  { id: 'in-progress', title: 'In Progress', icon: '⚡' },
   { id: 'review', title: 'Review', icon: '👀' },
-  { id: 'done', title: 'Erledigt', icon: '✅' }
+  { id: 'done', title: 'Done', icon: '✅' }
 ]
 
 function KanbanBoard({ project, onTaskUpdate, onTaskAdd }) {
   const [newTaskInputs, setNewTaskInputs] = useState({})
 
   if (!project) {
-    return <div className="empty-board">Kein Projekt ausgewählt</div>
+    return <div className="empty-board">No project selected</div>
   }
 
-  // Optimized grouping (prevents repeated filtering)
   const tasksByColumn = useMemo(() => {
     const grouped = {
       todo: [],
@@ -99,7 +98,7 @@ function KanbanBoard({ project, onTaskUpdate, onTaskAdd }) {
 
             <div className="tasks-list">
               {columnTasks.length === 0 ? (
-                <div className="empty-state">Keine Aufgaben</div>
+                <div className="empty-state">No tasks</div>
               ) : (
                 columnTasks.map(task => (
                   <div
@@ -141,7 +140,7 @@ function KanbanBoard({ project, onTaskUpdate, onTaskAdd }) {
             <div className="add-task-input">
               <input
                 type="text"
-                placeholder="Aufgabe hinzufügen..."
+                placeholder="Add a task..."
                 className="task-input"
                 value={newTaskInputs[column.id] || ''}
                 onChange={(e) => handleInputChange(column.id, e.target.value)}
