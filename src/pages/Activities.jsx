@@ -28,42 +28,52 @@ function Activities() {
     yesterday.setDate(yesterday.getDate() - 1)
 
     if (date.toDateString() === today.toDateString()) {
-      return `Heute, ${date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}`
+      return `Today, ${date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit'
+      })}`
     } else if (date.toDateString() === yesterday.toDateString()) {
-      return `Gestern, ${date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}`
+      return `Yesterday, ${date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit'
+      })}`
     } else {
-      return date.toLocaleString('de-DE')
+      return date.toLocaleString('en-US')
     }
   }
 
   if (loading) {
-    return <div className="activities-loading">Lade Aktivitäten...</div>
+    return <div className="activities-loading">Loading activities...</div>
   }
 
   return (
     <div className="activities-page">
       <div className="activities-header">
-        <h1>📜 Aktivitäten</h1>
-        <p>Chronologische Übersicht aller Projektaktivitäten</p>
+        <h1>📜 Activities</h1>
+        <p>Chronological overview of all project activities</p>
       </div>
 
       <div className="activities-timeline">
         {activities.length === 0 ? (
-          <div className="no-activities">Keine Aktivitäten vorhanden</div>
+          <div className="no-activities">No activities available</div>
         ) : (
           activities.map((activity, index) => (
             <div key={activity.id || index} className="timeline-item">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <div className="timeline-header">
-                  <span className="timeline-date">{formatDate(activity.timestamp)}</span>
+                  <span className="timeline-date">
+                    {formatDate(activity.timestamp)}
+                  </span>
                   <span className={`timeline-status ${activity.status}`}>
                     {activity.status}
                   </span>
                 </div>
+
                 <div className="timeline-body">
                   <h3>{activity.title}</h3>
                   <p>{activity.description}</p>
+
                   {activity.metadata && (
                     <div className="timeline-meta">
                       {activity.metadata.projectName && (
@@ -71,9 +81,10 @@ function Activities() {
                           📁 {activity.metadata.projectName}
                         </span>
                       )}
+
                       {activity.metadata.taskCount && (
                         <span className="meta-tag">
-                          📋 {activity.metadata.taskCount} Aufgaben
+                          📋 {activity.metadata.taskCount} Tasks
                         </span>
                       )}
                     </div>
